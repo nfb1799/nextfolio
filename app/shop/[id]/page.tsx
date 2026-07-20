@@ -1,5 +1,19 @@
 import { getProduct } from "@/lib/products";
 import { notFound } from "next/navigation";
+import { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const product = await getProduct(slug);
+  return {
+    title: product?.name || "Name not found",
+    description: product?.description.slice(0, 150) || "Description not found",
+  };
+}
 
 export default async function ProductPage({
   params

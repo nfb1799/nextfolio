@@ -4,6 +4,20 @@ import RelatedPosts from "@/components/RelatedPosts";
 import CommentForm from "@/components/CommentForm";
 import { getPost } from "@/lib/posts";
 import { getComments } from "@/lib/comments";
+import { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getPost(slug);
+  return {
+    title: post.title,
+    description: post.body.slice(0, 150),
+  };
+}
 
 export default async function BlogPostPage({
   params,

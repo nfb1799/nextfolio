@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Nextfolio",
+  title: {
+    default: "Nextfolio",
+    template: "%s | Nextfolio",
+  },
   description: "A Next.js feature showcase for learning the technology",
 };
+
+const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
@@ -12,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="inter.className">
       <body className="min-h-screen flex flex-col">
         <nav className="border-b p-4 flex gap-4">
           <a href="/">Home</a>

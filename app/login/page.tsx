@@ -1,5 +1,10 @@
 import { login } from "./actions";
 
+export const metadata = {
+  title: "Login",
+  description: "A basic login page using proxy.ts.",
+}
+
 export default async function LoginPage({
   searchParams,
 }: {
