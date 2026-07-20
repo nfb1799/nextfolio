@@ -3,4 +3,5 @@
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "editor.detectIndentation": false
+  "editor.inlineSuggest.enabled": false,
 }
