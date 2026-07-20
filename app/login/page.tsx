@@ -1,27 +1,18 @@
-import { login } from "./actions";
-
-export const metadata = {
-  title: "Login",
-  description: "A basic login page using proxy.ts.",
-}
+import { Suspense } from "react";
+import LoginForm from "./LoginForm";
 
 export default async function LoginPage({
   searchParams,
 }: {
   searchParams: Promise<{ from?: string }>;
 }) {
-  const { from } = await searchParams;
-
   return (
     <div>
       <h1 className="text-2xl font-bold mb-4">Log in</h1>
-      <p className="text-gray-600 mb-4">Mock login - Just demonstrating the auth gate.</p>
-      <form action={login} className="space-y-2">
-        <input type="hidden" name="redirectTo" value={from ?? "/dashboard"} />
-        <button type="submit" className="px-3 py-1 border rounded hover:bg-gray-100">
-          Log in as demo user
-        </button>
-      </form>
+      <p className="text-gray-600 mb-4">Mock login — just demonstrates the auth gate.</p>
+      <Suspense fallback={<p className="text-gray-400">Loading form…</p>}>
+        <LoginForm searchParams={searchParams} />
+      </Suspense>
     </div>
   );
 }
