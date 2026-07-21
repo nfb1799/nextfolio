@@ -1,8 +1,10 @@
 import type { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
+  const base = process.env.SITE_URL ?? "http://localhost:3000";
+  
   return {
     rules: { userAgent: "*", allow: "/", disallow: "/dashboard" },
-    sitemap: "https:/nextfolio.example.com/sitemap.xml",
+    sitemap: `${base}/sitemap.xml`,
   };
 }

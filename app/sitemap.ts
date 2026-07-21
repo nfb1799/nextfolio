@@ -4,7 +4,7 @@ import { getProducts } from "@/lib/products";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [posts, products] = await Promise.all([getPosts(), getProducts()]);
-  const base = "nextfolio.example.com"
+  const base = process.env.SITE_URL ?? "http://localhost:3000";
 
   return [
     { url: base, lastModified: new Date() },
