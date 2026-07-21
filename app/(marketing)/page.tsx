@@ -3,7 +3,7 @@ export default function HomePage() {
     <div>
       <h1 className="text-3xl font-bold">Welcome to Nextfolio</h1>
       <p className="mt-2 text-gray-600">
-        A site built to learn every corner of Next.js
+        A site built to learn every corner of Next.js. Testing a change right here.
       </p>
     </div>
   );
