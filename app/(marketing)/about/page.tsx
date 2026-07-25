@@ -4,10 +4,10 @@ export const metadata = {
 }
 
 export default function AboutPage() {
-    return (
-        <div>
-            <h1 className="text-2xl font-bold">About</h1>
-            <p className="text-gray-600">This site is my Next.js learning project.</p>
-        </div>
-    );
+  return (
+    <div>
+      <h1 className="text-3xl font-bold tracking-tight text-slate-900">About</h1>
+      <p className="mt-4 text-slate-600 leading-relaxed max-w-xl">This site is my Next.js learning project, styled with Tailwind CSS.</p>
+    </div>
+  );
 }

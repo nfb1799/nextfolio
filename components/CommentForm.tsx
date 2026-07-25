@@ -3,6 +3,8 @@
 import { useActionState, useOptimistic, useRef } from "react";
 import { postComment, type CommentFormState } from "@/app/blog/actions";
 import type { Comment } from "@/lib/comments";
+import Button from "@/components/Button";
+import { input } from "@/lib/ui";
 
 const initialState: CommentFormState = {};
 
@@ -47,12 +49,12 @@ export default function CommentForm({
       </ul>
 
       <form ref={formRef} action={formAction} className="space-y-2">
-        <input name="author" placeholder="Your name" className="border px-2 py-1 rounded w-full" required />
-        <textarea name="text" placeholder="Say something..." className="border px-2 py-1 rounded w-full" required />
+        <input name="author" placeholder="Your name" className={input} required />
+        <textarea name="text" placeholder="Say something..." className={input} required />
         {state.error && <p className="text-red-600 text-sm">{state.error}</p>}
-        <button type="submit" disabled={isPending} className="px-3 py-1 border rounded hover:bg-gray-100 disabled:opacity-50">
+        <Button type="submit" variant="primary" disabled={isPending}>
           {isPending ? "Posting..." : "Post comment"}
-        </button>
+        </Button>
       </form>
     </div>
   );

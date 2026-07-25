@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Container from "@/components/Container";
+import Nav from "@/components/Nav";
 
 export const metadata: Metadata = {
   title: {
@@ -19,19 +21,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="inter.className">
-      <body className="min-h-screen flex flex-col">
-        <nav className="border-b p-4 flex gap-4">
-          <a href="/">Home</a>
-          <a href="/about">About</a>
-          <a href="/blog">Blog</a>
-          <a href="/shop">Shop</a>
-          <a href="/dashboard">Dashboard</a>
-        </nav>
-        <main className="flex-1 p-6">
-          {children}
+      <body className="min-h-screen flex flex-col bg-slate-50 text-slate-900">
+        <Nav />
+        <main className="flex-1 py-8">
+          <Container>{children}</Container>
         </main>
-        <footer className="border-t p-4 text-sm text-gray-500">
-          Nextfolio - Built while learning Next.js
+        <footer className="border-t border-slate-200 mt-12">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-2 text-sm text-slate-500">
+            <p>Nextfolio - built while learning Next.js</p>
+            <a href="https://github.com/nfb1799/nextfolio" className="hover:text-slate-900 transition-colors">
+              View on GitHub
+            </a>
+          </div>
         </footer>
       </body>
     </html>

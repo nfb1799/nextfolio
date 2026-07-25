@@ -1,3 +1,3 @@
 export default function ShopLoading() {
-  return <p className="text-gray-400">Loading shop...</p>;
+  return <p className="text-slate-400">Loading shop...</p>;
 }

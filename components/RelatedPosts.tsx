@@ -14,7 +14,7 @@ export default async function RelatedPosts({ currentId }: { currentId: number })
       <ul className="space-y-1">
         {related.map((post) => (
           <li key={post.id}>
-            <Link href={`/blog/${post.id}`} className="text-blue-600 underline text-sm">
+            <Link href={`/blog/${post.id}`} className="text-brand-600 underline text-sm">
               {post.title}
             </Link>
           </li>

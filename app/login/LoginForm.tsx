@@ -1,4 +1,5 @@
 import { login } from "./actions";
+import Button from "@/components/Button";
 
 export default async function LoginForm({
   searchParams,
@@ -9,11 +10,9 @@ export default async function LoginForm({
   const { from } = await searchParams;
 
   return (
-    <form action={login} className="space-y-2">
+    <form action={login} className="space-y-3">
       <input type="hidden" name="redirectTo" value={from ?? "/dashboard"} />
-      <button type="submit" className="px-3 py-1 border rounded hover:bg-gray-100">
-        Log in as demo user
-      </button>
+      <Button type="submit" variant="primary" className="w-full">Log in as demo user</Button>
     </form>
   );
 }

@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react";
+import Button from "@/components/Button";
 
 export default function LikeButton({
   postId,
@@ -28,12 +29,12 @@ export default function LikeButton({
   }
   
   return (
-    <button
+    <Button
+      variant="secondary"
       onClick={handleLike}
       disabled={isLiking}
-      className="mt-4 px-3 py-1 border rounded hover:bg-gray-100 disabled:opacity-50"
     >
       ❤️ {likes}
-    </button>
+    </Button>
   );
 }

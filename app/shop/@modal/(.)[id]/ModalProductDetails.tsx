@@ -14,7 +14,7 @@ export default async function ModalProductDetails({
   return (
     <Modal>
       <h2 className="text-xl font-bold">{product.name}</h2>
-      <p className="text-gray-600 mt-1">${product.price}</p>
+      <p className="text-slate-600 mt-1">${product.price}</p>
       <p className="mt-2 text-sm">{product.description}</p>
     </Modal>
   );

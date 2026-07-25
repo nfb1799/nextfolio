@@ -24,7 +24,7 @@ export default function BlogPostPage({
   params: Promise<{ slug: string }>;
 }) {
   return (
-    <Suspense fallback={<p className="text-gray-400">Loading post…</p>}>
+    <Suspense fallback={<p className="text-slate-400">Loading post…</p>}>
       <BlogPostContent params={params} />
     </Suspense>
   );

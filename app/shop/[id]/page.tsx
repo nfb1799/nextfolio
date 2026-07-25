@@ -25,7 +25,7 @@ export default function ProductPage({
   params: Promise<{ id: string }>;
 }) {
   return (
-    <Suspense fallback={<p className="text-gray-400">Loading product…</p>}>
+    <Suspense fallback={<p className="text-slate-400">Loading product…</p>}>
       <ProductDetails params={params} />
     </Suspense>
   );

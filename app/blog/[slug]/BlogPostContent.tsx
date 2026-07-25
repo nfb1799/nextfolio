@@ -17,14 +17,23 @@ export default async function BlogPostContent({
   const likes = await getLikes(slug);
 
   return (
-    <div>
-      <h1 className="text-2xl font-bold">{post.title}</h1>
-      <p className="text-gray-600 mt-2">{post.body}</p>
-      <LikeButton postId={slug} initialLikes={likes}/>
-      <Suspense fallback={<p className="mt-8 text-sm text-gray-400">Loading related posts…</p>}>
-        <RelatedPosts currentId={post.id} />
-      </Suspense>
-      <CommentForm postId={slug} comments={comments} />
-    </div>
+    <article>
+      <h1 className="text-3xl font-bold tracking-tight text-slate-900">{post.title}</h1>
+      <p className="mt-4 text-slate-600 leading-relaxed max-w-xl">{post.body}</p>
+
+      <div className="mt-6">
+        <LikeButton postId={slug} initialLikes={likes} />
+      </div>
+
+      <div className="mt-10 pt-8 border-t border-slate-200">
+        <Suspense fallback={<p className="text-sm text-slate-400">Loading related posts...</p>}>
+          <RelatedPosts currentId={post.id} />
+        </Suspense>
+      </div>
+
+      <div className="mt-10 pt-8 border-t border-slate-200">
+        <CommentForm postId={slug} comments={comments} />
+      </div>
+    </article>
   );
 }
