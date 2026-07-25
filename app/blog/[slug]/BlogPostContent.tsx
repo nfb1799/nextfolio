@@ -5,6 +5,7 @@ import CommentForm from "@/components/CommentForm";
 import { getPost } from "@/lib/posts";
 import { getComments } from "@/lib/comments";
 import { getLikes } from "@/lib/likes";
+import Skeleton from "@/components/Skeleton";
 
 export default async function BlogPostContent({
   params,
@@ -26,7 +27,7 @@ export default async function BlogPostContent({
       </div>
 
       <div className="mt-10 pt-8 border-t border-slate-200">
-        <Suspense fallback={<p className="text-sm text-slate-400">Loading related posts...</p>}>
+        <Suspense fallback={<Skeleton className="h-20 w-full" />}>
           <RelatedPosts currentId={post.id} />
         </Suspense>
       </div>

@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect } from "react";
+import ErrorState from "@/components/ErrorState";
 
 export default function DashboardError({
   error,
@@ -9,17 +10,6 @@ export default function DashboardError({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
-  useEffect(() => {
-    console.error(error);
-  }, [error]);
-
-  return (
-    <div>
-      <h1 className="text-2xl font-bold mb-2">Dashboard failed to load</h1>
-      <p className="text-slate-600 mb-4">{error.message}</p>
-      <button onClick={() => reset()} className="px-3 py-1 border rounded hover:bg-slate-100">
-        Try again
-      </button>
-    </div>
-  );
+  useEffect(() => { console.error(error); }, [error]);
+  return <ErrorState title="Dashboard failed to load" message={error.message} onRetry={reset} />;
 }

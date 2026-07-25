@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import BlogPostContent from "./BlogPostContent";
 import { getPost, getPosts } from "@/lib/posts";
+import Skeleton from "@/components/Skeleton";
 
 export async function generateMetadata({
   params,
@@ -24,7 +25,15 @@ export default function BlogPostPage({
   params: Promise<{ slug: string }>;
 }) {
   return (
-    <Suspense fallback={<p className="text-slate-400">Loading post…</p>}>
+    <Suspense
+      fallback={
+        <div>
+          <Skeleton className="h-9 w-2/3 mb-4" />
+          <Skeleton className="h-4 w-full mb-2" />
+          <Skeleton className="h-4 w-5/6" />
+        </div>
+      }
+    >
       <BlogPostContent params={params} />
     </Suspense>
   );

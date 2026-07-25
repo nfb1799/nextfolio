@@ -1,8 +1,11 @@
+import NotFoundState from "@/components/NotFoundState";
 export default function ShopNotFound() {
   return (
-    <div>
-      <h1 className="text-2xl font-bold mb-2">Product not found</h1>
-      <p className="text-slate-600">That product doesn't exist - check the URL or head back to the shop.</p>
-    </div>
+    <NotFoundState
+      title="Product not found"
+      message="That product doesn't exist — check the URL or head back to the shop."
+      href="/shop"
+      linkLabel="Back to shop"
+    />
   );
 }

@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import ProductDetails from "./ProductDetails";
 import { getProduct, getProducts } from "@/lib/products";
+import Skeleton from "@/components/Skeleton";
 
 export async function generateMetadata({
   params,
@@ -25,7 +26,15 @@ export default function ProductPage({
   params: Promise<{ id: string }>;
 }) {
   return (
-    <Suspense fallback={<p className="text-slate-400">Loading product…</p>}>
+    <Suspense
+      fallback={
+        <div>
+          <Skeleton className="aspect-[4/3] w-full mb-6" />
+          <Skeleton className="h-8 w-1/2 mb-2" />
+          <Skeleton className="h-5 w-24" />
+        </div>
+      }
+    >
       <ProductDetails params={params} />
     </Suspense>
   );
