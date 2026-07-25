@@ -4,6 +4,7 @@ import RelatedPosts from "@/components/RelatedPosts";
 import CommentForm from "@/components/CommentForm";
 import { getPost } from "@/lib/posts";
 import { getComments } from "@/lib/comments";
+import { getLikes } from "@/lib/likes";
 
 export default async function BlogPostContent({
   params,
@@ -13,12 +14,13 @@ export default async function BlogPostContent({
   const { slug } = await params;
   const post = await getPost(slug);
   const comments = await getComments(slug);
+  const likes = await getLikes(slug);
 
   return (
     <div>
       <h1 className="text-2xl font-bold">{post.title}</h1>
       <p className="text-gray-600 mt-2">{post.body}</p>
-      <LikeButton />
+      <LikeButton postId={slug} initialLikes={likes}/>
       <Suspense fallback={<p className="mt-8 text-sm text-gray-400">Loading related posts…</p>}>
         <RelatedPosts currentId={post.id} />
       </Suspense>
