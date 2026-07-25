@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Container from "@/components/Container";
+import { Suspense } from "react";
 import Nav from "@/components/Nav";
+import NavSkeleton from "@/components/NavSkeleton";
 
 export const metadata: Metadata = {
   title: {
@@ -22,7 +24,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="inter.className">
       <body className="min-h-screen flex flex-col bg-slate-50 text-slate-900">
-        <Nav />
+        <Suspense fallback={<NavSkeleton />}>
+          <Nav />
+        </Suspense>
         <main className="flex-1 py-8">
           <Container>{children}</Container>
         </main>
