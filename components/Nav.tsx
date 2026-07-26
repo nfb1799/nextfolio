@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 const links = [
@@ -12,13 +12,16 @@ const links = [
   { href: "/dashboard", label: "Dashboard" },
 ];
 
-function isLinkActive(pathname: string, href: string) {
+function isLinkActive(pathname: string, href: string, from: string | null) {
+  if (pathname === "/login" && from === href) return true;
   if (href === "/") return pathname === "/";
   return pathname.startsWith(href);
 }
 
 export default function Nav() {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const from = searchParams.get("from");
   const [isOpen, setIsOpen] = useState(false);
 
   return(
@@ -34,7 +37,7 @@ export default function Nav() {
               key={link.href}
               href={link.href}
               className={
-                isLinkActive(pathname, link.href)
+                isLinkActive(pathname, link.href, from)
                 ? "text-brand-600 font-medium"
                 : "text-slate-600 hover:text-slate-900 transition-colors"
               }
@@ -59,7 +62,7 @@ export default function Nav() {
               key={link.href}
               href={link.href}
               onClick={() => setIsOpen(false)}
-              className={isLinkActive(pathname, link.href) ? "text-brand-600 font-medium" : "text-slate-600"}
+              className={isLinkActive(pathname, link.href, from) ? "text-brand-600 font-medium" : "text-slate-600"}
             >
               {link.label}
             </Link>
