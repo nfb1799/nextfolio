@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes } from "react";
 
-export const buttonBase = "px-4 py-2 rounded-lg text-sm font-medium transition-colors disabled:cursor-not-allowed inline-flex items-center justify-center";
+export const buttonBase = "px-4 py-2 rounded-lg text-sm font-medium transition active:scale-95 disabled:cursor-not-allowed inline-flex items-center justify-center";
 
 export const buttonVariants = {
   primary: "bg-brand-600 text-white hover:bg-brand-700 disabled:bg-brand-300",

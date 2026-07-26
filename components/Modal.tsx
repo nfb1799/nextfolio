@@ -17,8 +17,8 @@ export default function Modal({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50" onClick={onDismiss}>
-      <div className="bg-white rounded-lg p-6 max-w-md w-full" onClick={(e) => e.stopPropagation()}>
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 animate-fade-in" onClick={onDismiss}>
+      <div className="bg-white rounded-lg p-6 max-w-md w-full shadow-lg animate-scale-in" onClick={(e) => e.stopPropagation()}>
         {children}
         <div className="mt-6 pt-4 border-t border-slate-100">
           <Button variant="ghost" onClick={onDismiss}>

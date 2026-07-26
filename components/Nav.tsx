@@ -53,7 +53,7 @@ export default function Nav() {
         </button>
       </div>
       {isOpen && (
-        <div className="sm:hidden border-t border-slate-200 bg-white px-4 py-3 flex flex-col gap-3">
+        <div className="sm:hidden border-t border-slate-200 bg-white px-4 py-3 flex flex-col gap-3 animate-fade-in">
           {links.map((link) => (
             <Link
               key={link.href}
