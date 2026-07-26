@@ -8,7 +8,7 @@ export default function HomePage() {
       <p className="mt-4 text-lg text-slate-600 max-w-xl mx-auto">
         A site built to learn and showcase nearly every feature of Next.js.
       </p>
-      <div className="mt-8 flex justify-center gap-3">
+      <div className="mt-8 flex flex-col sm:flex-row justify-center gap-3">
         <Link href="/blog" className={`${buttonBase} ${buttonVariants.primary}`}>Read the blog</Link>
         <Link href="/shop" className={`${buttonBase} ${buttonVariants.secondary}`}>Browse the shop</Link>
       </div>

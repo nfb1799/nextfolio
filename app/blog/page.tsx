@@ -7,7 +7,7 @@ export default async function BlogIndexPage() {
   return (
     <div>
       <h1 className="text-3xl font-bold tracking-tight text-slate-900 mb-6">Blog</h1>
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {posts.map((post) => (
           <Link key={post.id} href={`/blog/${post.id}`} className={`${card} ${cardHover} p-5 block`}>
             <h2 className="font-semibold text-slate-900">{post.title}</h2>
