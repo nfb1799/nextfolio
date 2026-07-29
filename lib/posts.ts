@@ -1,4 +1,5 @@
 import "server-only";
+import { cacheLife, cacheTag } from "next/cache";
 
 export type Post = {
   id: number;
@@ -7,17 +8,21 @@ export type Post = {
 };
 
 export async function getPosts(): Promise<Post[]> {
-  const res = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=5", {
-    next: { revalidate: 60, tags: ["posts"] },
-  });
+  "use cache";
+  cacheLife("minutes");
+  cacheTag("posts");
+
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=5");
   if (!res.ok) throw new Error("Failed to fetch posts");
   return res.json();
 }
 
 export async function getPost(id: string): Promise<Post> {
-  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
-    next: { revalidate: 60, tags: [`post-${id}`] },
-  });
+  "use cache";
+  cacheLife("minutes");
+  cacheTag("posts", `post-${id}`);
+
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
   if (!res.ok) throw new Error("Failed to fetch post");
   return res.json();
 }

@@ -1,7 +1,7 @@
 "use server";
 
 import { addComment } from "@/lib/comments";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 
 export type CommentFormState = {
   error?: string;
@@ -22,4 +22,8 @@ export async function postComment(
   await addComment(postId, author, text);
   revalidatePath(`/blog/${postId}`);
   return {};
+}
+
+export async function refreshPosts() {
+  revalidateTag("posts", "max");
 }

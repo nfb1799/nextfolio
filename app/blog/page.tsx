@@ -1,12 +1,21 @@
 import Link from "next/link";
 import { getPosts } from "@/lib/posts";
 import { card, cardHover } from "@/lib/ui";
+import { refreshPosts } from "./actions";
+import Button from "@/components/Button";
 
 export default async function BlogIndexPage() {
   const posts = await getPosts();
   return (
     <div>
-      <h1 className="text-3xl font-bold tracking-tight text-slate-900 mb-6">Blog</h1>
+      <div className="flex items-center justify-between gap-4 mb-6">
+        <h1 className="text-3xl font-bold tracking-tight text-slate-900">Blog</h1>
+        <form action={refreshPosts}>
+          <Button type="submit" variant="ghost">
+            Revalidate cache
+          </Button>
+        </form>
+      </div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {posts.map((post) => (
           <Link key={post.id} href={`/blog/${post.id}`} className={`${card} ${cardHover} p-5 block`}>
