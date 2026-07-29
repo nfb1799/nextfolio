@@ -1,12 +1,12 @@
 "use client"
 
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import Button from "@/components/Button";
 
 export default function Modal({ children }: { children: React.ReactNode }) {
   const router = useRouter();
-  const onDismiss = () => router.back();
+  const onDismiss = useCallback(() => router.back(), [router]);
 
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
@@ -14,7 +14,7 @@ export default function Modal({ children }: { children: React.ReactNode }) {
     }
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, []);
+  }, [onDismiss]);
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 animate-fade-in" onClick={onDismiss}>

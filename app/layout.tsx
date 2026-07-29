@@ -7,6 +7,7 @@ import Nav from "@/components/Nav";
 import NavSkeleton from "@/components/NavSkeleton";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.SITE_URL ?? "http://localhost:3000"),
   title: {
     default: "Nextfolio",
     template: "%s | Nextfolio",
@@ -22,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="inter.className">
+    <html lang="en" className={inter.className}>
       <body className="min-h-screen flex flex-col bg-slate-50 text-slate-900">
         <Suspense fallback={<NavSkeleton />}>
           <Nav />

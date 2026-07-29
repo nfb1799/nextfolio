@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
   }
 
   await addComment(postId, author, text);
-  revalidatePath(`blog/${postId}`);
+  revalidatePath(`/blog/${postId}`);
 
   return NextResponse.json({ success: true }, { status: 201 });
 }
