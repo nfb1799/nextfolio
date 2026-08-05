@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { incrementLikes } from "@/lib/likes";
-import { revalidatePath } from "next/cache";
+import { revalidateTag } from "next/cache";
 
 export async function POST(
   request: Request,
@@ -8,6 +8,6 @@ export async function POST(
 ) {
   const { id } = await params;
   const total = await incrementLikes(id);
-  revalidatePath(`/blog/${id}`);
+  revalidateTag(`likes-${id}`, "max");
   return NextResponse.json({ likes: total });
 }

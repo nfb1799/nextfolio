@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getComments, addComment } from "@/lib/comments";
-import { revalidatePath } from "next/cache";
+import { revalidateTag } from "next/cache";
 
 export async function GET(request: NextRequest) {
   const postId = request.nextUrl.searchParams.get("postId");
@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
   }
 
   await addComment(postId, author, text);
-  revalidatePath(`/blog/${postId}`);
+  revalidateTag(`comments-${postId}`, "max");
 
   return NextResponse.json({ success: true }, { status: 201 });
 }
